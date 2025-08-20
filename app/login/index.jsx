@@ -8,6 +8,7 @@ import {
   BottomSheetView,
   BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
+import myTheme from "@/theme/theme";
 
 const Login = () => {
   const ModalInicialRef = useRef(null);
@@ -36,7 +37,7 @@ const Login = () => {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <BottomSheetModalProvider>
         <Image
-          source={require("@assets/background_apresentacao.jpeg")}
+          source={require("@assets/background.png")}
           style={styles.image}
         />
 
@@ -50,7 +51,7 @@ const Login = () => {
           backgroundStyle={{
             borderTopLeftRadius: 48,
             borderTopRightRadius: 48,
-            backgroundColor: "#faf4f0",
+            backgroundColor: myTheme.colors.surfaceContainerLowest,
           }}
           handleComponent={null}
         >
@@ -85,7 +86,7 @@ const Login = () => {
           backgroundStyle={{
             borderTopLeftRadius: 48,
             borderTopRightRadius: 48,
-            backgroundColor: "#faf4f0",
+            backgroundColor: myTheme.colors.surfaceContainerLowest,
           }}
         >
           <BottomSheetView style={styles.contentContainer}>
@@ -127,8 +128,9 @@ const Login = () => {
                 >
                   <Button
                     mode="contained"
-                    buttonColor="#ffffffff"
+                    buttonColor={myTheme.colors.surfaceContainerLowest}
                     elevation={5}
+                    onPress={() => {}}
                   >
                     <Image
                       source={require("@assets/google.png")}

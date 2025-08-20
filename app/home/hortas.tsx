@@ -131,7 +131,7 @@ export default function Hortas({ visible, animateFrom, style }: HortasProps) {
         icon={"plus"}
         label={"Nova Horta"}
         extended={isExtended}
-        onPress={() => console.log("Pressed")}
+        onPress={() => {}}
         visible={visible}
         animateFrom={animateFrom}
         iconMode={"static"}
