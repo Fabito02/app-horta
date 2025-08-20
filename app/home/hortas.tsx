@@ -1,16 +1,32 @@
-import { View, StyleSheet, FlatList } from "react-native";
+import {
+  View,
+  StyleSheet,
+  FlatList,
+  Text,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
+} from "react-native";
 import myTheme from "@/theme/theme";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import HortaItem from "@/components/HortaItem";
+import { AnimatedFAB } from "react-native-paper";
+import { useState } from "react";
 
 type RootStackParamList = {
   hortas: undefined;
 };
 
-export default function Hortas() {
+type HortasProps = {
+  visible: boolean;
+  animateFrom: "right" | "left";
+  style?: object;
+};
+
+export default function Hortas({ visible, animateFrom, style }: HortasProps) {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const [isExtended, setIsExtended] = useState(true);
 
   const hortasData = [
     {
@@ -85,17 +101,42 @@ export default function Hortas() {
     },
   ];
 
+  const fabStyle = { [animateFrom]: 16 };
+
+  const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const currentScrollPosition =
+      Math.floor(event.nativeEvent.contentOffset.y) ?? 0;
+    setIsExtended(currentScrollPosition <= 0);
+  };
+
   return (
-    <View style={{ flex: 1, backgroundColor: "#ffffffff" }}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: myTheme.colors.surfaceContainerLowest,
+      }}
+    >
       <View style={styles.container}>
-          <FlatList
-            data={hortasData}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => <HortaItem item={item} />}
-            showsVerticalScrollIndicator={false}
-            numColumns={1}
-          />
+        <FlatList
+          data={hortasData}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => <HortaItem item={item} />}
+          showsVerticalScrollIndicator={false}
+          numColumns={1}
+          onScroll={onScroll}
+          scrollEventThrottle={16}
+        />
       </View>
+      <AnimatedFAB
+        icon={"plus"}
+        label={"Nova Horta"}
+        extended={isExtended}
+        onPress={() => console.log("Pressed")}
+        visible={visible}
+        animateFrom={animateFrom}
+        iconMode={"static"}
+        style={[styles.fabStyle, style, fabStyle]}
+      />
     </View>
   );
 }
@@ -107,7 +148,12 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 30,
     paddingHorizontal: 30,
     paddingTop: 30,
-    backgroundColor: myTheme.colors.surfaceContainerLow,
+    backgroundColor: myTheme.colors.surfaceContainer,
     width: "100%",
+  },
+  fabStyle: {
+    bottom: 16,
+    right: 16,
+    position: "absolute",
   },
 });

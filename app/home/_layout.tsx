@@ -2,13 +2,14 @@ import { Tabs } from "expo-router";
 import CustomTab from "@components/customTab/CustomTab";
 import { Appbar } from "react-native-paper";
 import { View, StyleSheet } from "react-native";
+import myTheme from "@/theme/theme";
 
 export default function HomeLayout() {
   const nome = "Rancho Valente";
 
   return (
     <View style={styles.container}>
-      <Appbar.Header style={{ backgroundColor: "#fff" }}>
+      <Appbar.Header style={{ backgroundColor: myTheme.colors.surfaceContainerLowest }}>
         <Appbar.Action icon="menu" onPress={() => {}} />
         <Appbar.Content title={nome}></Appbar.Content>
       </Appbar.Header>
@@ -27,6 +28,6 @@ export default function HomeLayout() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: { flex: 1, backgroundColor: myTheme.colors.surfaceContainer },
   tabs: { flex: 1 },
 });

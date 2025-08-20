@@ -13,7 +13,12 @@ export default function Principal() {
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#ffffffff" }}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: myTheme.colors.surfaceContainerLowest,
+      }}
+    >
       <View style={styles.clima}></View>
       <View style={styles.container}>
         <Text
@@ -81,7 +86,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 30,
     padding: 30,
     paddingBottom: 40,
-    backgroundColor: myTheme.colors.surfaceContainerLow,
+    backgroundColor: myTheme.colors.surfaceContainer,
     width: "100%",
   },
   opcoes: {
@@ -94,7 +99,7 @@ const styles = StyleSheet.create({
   },
   clima: {
     height: 150,
-    backgroundColor: "#ffffffff",
+    backgroundColor: myTheme.colors.surfaceContainerLowest,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -102,8 +107,7 @@ const styles = StyleSheet.create({
     paddingBottom: 12,
     borderRadius: 20,
     width: "44%",
-    backgroundColor: "#ffffff",
-    elevation: 1,
+    backgroundColor: myTheme.colors.surfaceContainerLowest,
   },
   opcaoContent: {
     alignItems: "center",

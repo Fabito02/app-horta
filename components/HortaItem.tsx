@@ -1,3 +1,4 @@
+import myTheme from "@/theme/theme";
 import { View, Image, StyleSheet } from "react-native";
 import { TouchableRipple, Text } from "react-native-paper";
 
@@ -38,8 +39,7 @@ const styles = StyleSheet.create({
   horta: {
     borderRadius: 20,
     width: "100%",
-    backgroundColor: "#ffffff",
-    elevation: 1,
+    backgroundColor: myTheme.colors.surfaceContainerLowest,
     marginBottom: 30,
     paddingRight: 20,
   },

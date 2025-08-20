@@ -16,7 +16,7 @@ export default function MyCustomTabBar({ state, descriptors, navigation }) {
   useEffect(() => {
     widthAnims.forEach((anim, i) => {
       Animated.timing(anim, {
-        toValue: i === state.index ? 130 : 60,
+        toValue: i === state.index ? 130 : 55,
         duration: 200,
         useNativeDriver: false,
       }).start();
@@ -42,15 +42,9 @@ export default function MyCustomTabBar({ state, descriptors, navigation }) {
       style={{
         flexDirection: "row",
         justifyContent: "space-around",
-        backgroundColor: "#ffffffff",
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 6,
-        },
-        shadowOpacity: 0.1,
-        shadowRadius: 3.84,
-        elevation: 8,
+        backgroundColor: myTheme.colors.surfaceContainerLowest,
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
       }}
     >
       {state.routes.map((route, index) => {
@@ -90,7 +84,7 @@ export default function MyCustomTabBar({ state, descriptors, navigation }) {
                     : "sprout"
                 }
                 size={24}
-                color={isFocused ? "#fff" : "rgba(40, 40, 40, 1)"}
+                color={isFocused ? "#fff" : myTheme.colors.onSurfaceVariant}
               />
               {(expandedIndex === index || isFocused) && (
                 <Text

@@ -9,7 +9,8 @@
       "@screens/*": ["./screens/*"],
       "@hooks/*": ["./hooks/*"],
       "@utils/*": ["./utils/*"],
-      "@assets/*": ["./assets/*"]
+      "@assets/*": ["./assets/*"],
+      "@theme/*": ["./theme/*"]
     }
   }
 }
