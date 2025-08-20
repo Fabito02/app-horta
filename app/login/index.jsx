@@ -30,7 +30,9 @@ const Login = () => {
   const [text, setText] = React.useState("");
 
   useEffect(() => {
-    ModalInicialRef.current?.present();
+    setTimeout(() => {
+      ModalInicialRef.current.present();
+    }, 1000);
   }, []);
 
   return (
